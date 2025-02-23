@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Panier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Votre panier</h1>
+    {% if panier %}
+    <table>
+        <thead>
+            <tr>
+                <th>Produit</th>
+                <th>Quantité</th>
+                <th>Prix</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in panier %}
+            <tr>
+                <td>{{ item['produit']['nom'] }}</td>
+                <td>{{ item['quantite'] }}</td>
+                <td>{{ item['prix_total'] }} €</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Total</td>
+                <td>{{ total }} €</td>
+            </tr>
+        </tfoot>
+    </table>
+    <form action="{{ url_for('commande') }}" method="post">
+        <input type="email" name="email" placeholder="Votre email" required>
+        <button type="submit">Commander</button>
+    </form>
+    {% else %}
+    <p>Votre panier est vide.</p>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Retour à la boutique</a>
+</body>
+</html>
