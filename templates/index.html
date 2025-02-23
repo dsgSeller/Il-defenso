@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>Boutique en ligne</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-    <h1>Nos produits</h1>
-    <div class="produits">
-        {% for produit_id, produit in produits.items() %}
-        <div class="produit">
-            <img src="{{ url_for('static', filename=produit['image']) }}" alt="{{ produit['nom'] }}">
-            <h2>{{ produit['nom'] }}</h2>
-            <p>Prix : {{ produit['prix'] }} €</p>
-            <form action="{{ url_for('panier') }}" method="post">
-                <input type="hidden" name="produit_id" value="{{ produit_id }}">
-                <input type="number" name="quantite" value="1" min="1">
-                <button type="submit">Ajouter au panier</button>
-            </form>
+    <html>
+    <head>
+        <title>Boutique en ligne</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Nos produits</h1>
+        <div class="produits">
+            {% for produit_id, produit in produits.items() %}
+            <div class="produit">
+                <img src="{{ url_for('static', filename=produit['image']) }}" alt="{{ produit['nom'] }}">
+                <h2>{{ produit['nom'] }}</h2>
+                <p>Prix : {{ produit['prix'] }} €</p>
+                <form action="{{ url_for('panier') }}" method="post">
+                    <input type="hidden" name="produit_id" value="{{ produit_id }}">
+                    <input type="number" name="quantite" value="1" min="1">
+                    <button type="submit">Ajouter au panier</button>
+                </form>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-    </div>
-    <a href="{{ url_for('panier') }}">Voir le panier</a>
-</body>
-</html>
+        <a href="{{ url_for('panier') }}">Voir le panier</a>
+    </body>
+    </html>
