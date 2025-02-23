@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif;
+}
+
+.produits {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.produit {
+    width: 200px;
+    margin: 20px;
+    text-align: center;
+}
+
+.produit img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
